@@ -71,4 +71,17 @@ with open(csvpath, newline='') as csvfile:
     print("----------------------------")
     print("")
 
-# Average change (lastnum-firstnum)/ 85
+file= open("Financial Analysis.txt","w+")
+
+file.write("\n")
+file.write("Financial Analysis\n")
+file.write("----------------------------\n")
+file.write(f"Total Months: {count}\n")
+file.write(f"Total: ${total}\n")
+file.write(f"Average Change: ${avgchange:.2f}\n")
+file.write(f"Greatest Increase in Profits: {greatpriceday} ${greatprice}\n")
+file.write(f"Greatest Decrease in Profits: {worstpriceday} ${worstprice}\n")
+file.write("----------------------------\n")
+file.write("\n")
+
+file.close() 
