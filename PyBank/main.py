@@ -18,7 +18,7 @@ with open(csvpath, newline='') as csvfile:
 
 
     # # Read the header row first (skip this step if there is no header)
-    csv_header = next(csvreader)
+    #csv_header = next(csvreader)
     #print(f"CSV Header: {csv_header}")
     #print(csvreader)
     # greatprice = int(csvreader[1])
@@ -40,6 +40,9 @@ with open(csvpath, newline='') as csvfile:
 
     lastprice = int(price[len(price)-1])
     firstprice = int(price[0])
+
+    print(lastprice)
+    print(firstprice)
     avgchange = (lastprice - firstprice)/85
 
     print("")
