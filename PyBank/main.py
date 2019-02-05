@@ -30,7 +30,10 @@ with open(csvpath, newline='') as csvfile:
         
         price.append(row[1])
         theday.append(row[0])
-        
+
+        greatpriceday = theday[0]
+        worstpriceday = theday[0]
+
     greatprice = int(price[0]) - int(price[1])
     worstprice = int(price[0]) - int(price[1])
     
@@ -39,9 +42,11 @@ with open(csvpath, newline='') as csvfile:
         pricechange = int(price[idk]) - int(price[x])
         if pricechange > greatprice:
             greatprice = pricechange
+            greatpriceday = theday[idk]
+
         if pricechange < worstprice:
             worstprice = pricechange
-
+            worstpriceday = theday[idk]
         # if greatprice < int(price[x]):
         #     greatprice = int(price[x])
         # if worstprice > int(price[x]):
@@ -61,9 +66,9 @@ with open(csvpath, newline='') as csvfile:
     print(f"Total Months: {count}")
     print(f"Total: ${total}")
     print(f"Average Change: ${avgchange:.2f}")
-    print(f"Greatest Increase in Profits: ${greatprice}")
-    print(f"Greatest Decrease in Profits: ${worstprice}")
+    print(f"Greatest Increase in Profits: {greatpriceday} ${greatprice}")
+    print(f"Greatest Decrease in Profits: {worstpriceday} ${worstprice}")
+    print("----------------------------")
     print("")
-
 
 # Average change (lastnum-firstnum)/ 85
