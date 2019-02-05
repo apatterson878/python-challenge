@@ -21,9 +21,7 @@ with open(csvpath, newline='') as csvfile:
     #csv_header = next(csvreader)
     #print(f"CSV Header: {csv_header}")
     #print(csvreader)
-    # greatprice = int(csvreader[1])
-    # badprice = int(csvreader[1])
-    
+
     # # Read each row of data after the header  
     for row in csvreader:
         
@@ -32,17 +30,29 @@ with open(csvpath, newline='') as csvfile:
         
         price.append(row[1])
         theday.append(row[0])
+        
+    greatprice = int(price[0]) - int(price[1])
+    worstprice = int(price[0]) - int(price[1])
     
-        # if greatprice > int(next(row[1])):
-        #     greatprice = int(next(row))
-    print(int((row[1])))
-    print(str(price))
+    for x in range(len(price)-1):
+        idk = (int(x) + 1)
+        pricechange = int(price[idk]) - int(price[x])
+        if pricechange > greatprice:
+            greatprice = pricechange
+        if pricechange < worstprice:
+            worstprice = pricechange
+
+        # if greatprice < int(price[x]):
+        #     greatprice = int(price[x])
+        # if worstprice > int(price[x]):
+        #     worstprice = int(price[x])
 
     lastprice = int(price[len(price)-1])
     firstprice = int(price[0])
+   
 
-    print(lastprice)
-    print(firstprice)
+    
+
     avgchange = (lastprice - firstprice)/85
 
     print("")
@@ -51,6 +61,9 @@ with open(csvpath, newline='') as csvfile:
     print(f"Total Months: {count}")
     print(f"Total: ${total}")
     print(f"Average Change: ${avgchange:.2f}")
+    print(f"Greatest Increase in Profits: ${greatprice}")
+    print(f"Greatest Decrease in Profits: ${worstprice}")
     print("")
+
 
 # Average change (lastnum-firstnum)/ 85
