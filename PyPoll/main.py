@@ -45,7 +45,6 @@ file.write("----------------------------\n")
 votes = 0
 winner = unique_candidate[0]
 for y in range(len(unique_candidate)): #range(0, 3)
-    votestorage = votes
     votes = 0
     
     for z in range(len(candidate)): #range(0, 3521000)
@@ -58,9 +57,12 @@ for y in range(len(unique_candidate)): #range(0, 3)
 
     if votes > votestorage:
         winner = unique_candidate[y]
+        votestorage = votes
+    
+
+    
     print(f"{unique_candidate[y]}:{percentofvote}% ({votes})") 
     file.write(f"{unique_candidate[y]}: {percentofvote}% ({votes})\n") 
-
 
 print("----------------------------")
 print(f"Winner: {winner}")
