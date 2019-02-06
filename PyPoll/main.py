@@ -4,7 +4,7 @@ import csv
 county = []
 candidate = []
 unique_candidate = []
-votestorage = []
+votestorage = 0
 percentofvote = 0.00
 csvpath = os.path.join( "Resources", "election_data.csv")
 
@@ -42,21 +42,26 @@ file.write("----------------------------\n")
 file.write(f"Total Votes: {count}\n")
 file.write("----------------------------\n")
 #####
+votes = 0
 winner = unique_candidate[0]
 for y in range(len(unique_candidate)): #range(0, 3)
+    votestorage = votes
     votes = 0
-    # print(unique_candidate[idk])
+    
     for z in range(len(candidate)): #range(0, 3521000)
         
         if candidate[z] == unique_candidate[y]:
             votes +=1 
             
     percentofvote = round(float((votes / count)*100),3)
-    votestorage = (unique_candidate[y],votes)
+    #votestorage = count - votes
 
+    if votes > votestorage:
+        winner = unique_candidate[y]
     print(f"{unique_candidate[y]}:{percentofvote}% ({votes})") 
     file.write(f"{unique_candidate[y]}: {percentofvote}% ({votes})\n") 
-        
+
+
 print("----------------------------")
 print(f"Winner: {winner}")
 print("----------------------------")
