@@ -16,12 +16,6 @@ with open(csvpath, newline='') as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
 
-
-    # # Read the header row first (skip this step if there is no header)
-    #csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
-    #print(csvreader)
-
     # # Read each row of data after the header  
     for row in csvreader:
         
@@ -47,18 +41,14 @@ with open(csvpath, newline='') as csvfile:
         if pricechange < worstprice:
             worstprice = pricechange
             worstpriceday = theday[idk]
-        # if greatprice < int(price[x]):
-        #     greatprice = int(price[x])
-        # if worstprice > int(price[x]):
-        #     worstprice = int(price[x])
-
+      
+    #Finding the first price and last price for avg change
     lastprice = int(price[len(price)-1])
     firstprice = int(price[0])
-   
+    print(firstprice)
+    print(lastprice)
 
-    
-
-    avgchange = (lastprice - firstprice)/85
+    avgchange = (lastprice - firstprice)/85   
 
     print("")
     print("Financial Analysis")
@@ -70,6 +60,8 @@ with open(csvpath, newline='') as csvfile:
     print(f"Greatest Decrease in Profits: {worstpriceday} ${worstprice}")
     print("----------------------------")
     print("")
+
+#Creating the text file
 
 file= open("Financial Analysis.txt","w+")
 
