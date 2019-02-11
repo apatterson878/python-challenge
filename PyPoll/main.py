@@ -44,16 +44,16 @@ file.write("----------------------------\n")
 #####
 votes = 0
 winner = unique_candidate[0]
-for y in range(len(unique_candidate)): #range(0, 3)
+for y in range(len(unique_candidate)): 
     votes = 0
     
-    for z in range(len(candidate)): #range(0, 3521000)
+    for z in range(len(candidate)): 
         
         if candidate[z] == unique_candidate[y]:
             votes +=1 
             
     percentofvote = round(float((votes / count)*100),3)
-    #votestorage = count - votes
+    
 
     if votes > votestorage:
         winner = unique_candidate[y]
